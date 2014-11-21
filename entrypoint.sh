@@ -16,15 +16,15 @@ if [ $? -gt 1 ]; then
    exec "$@"
 fi
 
-# If we are provided a GITHUB_DEPLOY_KEY (path), then
-# change it to the new, generic DEPLOY_KEY
-if [ -n "${GITHUB_DEPLOY_KEY}" ]; then
-   DEPLOY_KEY=$GITHUB_DEPLOY_KEY
-fi
+# Not sure how this is supposed to work.
+## If we are provided a GITHUB_DEPLOY_KEY (path), then
+## change it to the new, generic DEPLOY_KEY
+#if [ -n "${GITHUB_DEPLOY_KEY}" ]; then
+#   DEPLOY_KEY=$GITHUB_DEPLOY_KEY
+#fi
 
-# If we are given a DEPLOY_KEY, copy it into /root/.ssh and
-# setup a github rule to use it
-if [ -n "${DEPLOY_KEY}" ]; then
+# Set environment with Docker with -e option
+if [ -n $DEPLOY_KEY ]; then
    if [ ! -f /root/.ssh/deploy_key ]; then
       mkdir -p /root/.ssh
       cp ${DEPLOY_KEY} /root/.ssh/deploy_key

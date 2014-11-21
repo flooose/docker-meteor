@@ -36,6 +36,9 @@ RUN chmod +x /usr/bin/entrypoint.sh
 # Add known_hosts file
 ADD known_hosts /root/.ssh/known_hosts
 
+# Add deploy_key
+ADD deploy_key /deploy_key
+
 EXPOSE 80
 
 ENTRYPOINT ["/usr/bin/entrypoint.sh"]
